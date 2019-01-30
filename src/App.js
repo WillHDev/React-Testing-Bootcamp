@@ -1,13 +1,11 @@
 /* eslint react/no-did-mount-set-state: 0 */
-import React from 'react';
-import {
-  BrowserRouter as Router, Route, Switch, Link,
-} from 'react-router-dom';
-import logo from './logo.svg';
-import './App.css';
-
-import MoviesList from './MoviesList';
-import MovieDetail from './MovieDetail';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import logo from "./logo.svg";
+import "./App.css";
+import { add } from "./Add";
+import MoviesList from "./MoviesList";
+import MovieDetail from "./MovieDetail";
 
 const App = () => (
   <Router>
@@ -25,4 +23,8 @@ const App = () => (
   </Router>
 );
 
+export const total = (lastWeekPay, thisWeekPay) => {
+  return "$" + add(lastWeekPay, thisWeekPay);
+};
 export default App;
+//  return "$" + lastWeekPay + thisWeekPay;

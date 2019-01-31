@@ -4,12 +4,11 @@ import { MemoryRouter } from "react-router-dom";
 import MovieDetail from "./MovieDetail";
 
 //for entire test sweet assigns fetch to ...
-global.fetch = require('jest-fetch-mock');
-
+global.fetch = require("jest-fetch-mock");
 
 afterEach(() => {
   cleanup();
-  console.error.mockClear();
+  //console.error.mockClear();
 });
 
 // console.error = jest.fn();
@@ -22,7 +21,15 @@ const match = {
 
 test("<MovieDetail />", () => {
   //render(<Movie />);
-  const { debug } = render(<MovieDetail match={match} />);
+  fetch.mockResponseOnce(
+    JSON.stringify({
+      movie: {
+        id: "hi",
+        title: "Level Up"
+      }
+    })
+  );
+  const { debug, getByTestId } = render(<MovieDetail match={match} />);
   //expect(console.error).toHaveBeenCalled();
   debug();
 });
